@@ -1,16 +1,24 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import AccordionGallery from '../components/reactbits/AccordionGallery';
 import Masonry from '../components/reactbits/Masonry';
 import galleryData from '../data/gallery.json';
 
 export default function GalleryPage() {
-  const [category, setCategory] = useState('सभी');
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const categories = useMemo(() => {
     const set = new Set(galleryData.photos.map((p) => p.category));
     return ['सभी', ...Array.from(set)];
   }, []);
+
+  const paramCat = searchParams.get('category');
+  const category = paramCat && categories.includes(paramCat) ? paramCat : 'सभी';
+
+  const setCategory = (cat) => {
+    if (cat === 'सभी') setSearchParams({}, { replace: true });
+    else setSearchParams({ category: cat }, { replace: true });
+  };
 
   const filteredPhotos = useMemo(
     () =>

@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import SpotlightCard from '../components/reactbits/SpotlightCard';
 import rakshakData from '../data/rakshak.json';
 
 export default function BhashaRakshakPage() {
   const { hash } = useLocation();
+  const navigate = useNavigate();
+  const tabRefs = useRef([]);
   const [activeId, setActiveId] = useState(rakshakData.divisions[0].id);
   const [query, setQuery] = useState('');
 
@@ -15,6 +17,24 @@ export default function BhashaRakshakPage() {
       setActiveId(slug);
     }
   }, [hash]);
+
+  const selectDivision = (id, syncHash = true) => {
+    setActiveId(id);
+    if (syncHash) navigate(`#${id}`, { replace: true });
+  };
+
+  const handleTabKeyDown = (e, idx) => {
+    const len = rakshakData.divisions.length;
+    let nextIdx = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextIdx = (idx + 1) % len;
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nextIdx = (idx - 1 + len) % len;
+    if (nextIdx !== null) {
+      e.preventDefault();
+      const next = rakshakData.divisions[nextIdx];
+      selectDivision(next.id, true);
+      tabRefs.current[nextIdx]?.focus({ preventScroll: true });
+    }
+  };
 
   const activeDivision =
     rakshakData.divisions.find((d) => d.id === activeId) || rakshakData.divisions[0];
@@ -56,15 +76,21 @@ export default function BhashaRakshakPage() {
           </div>
 
           <div className="seg" role="tablist" aria-label="भारतीय भाषा रक्षक छह श्रेणियां">
-            {rakshakData.divisions.map((div) => (
+            {rakshakData.divisions.map((div, idx) => (
               <button
                 key={div.id}
+                ref={(el) => {
+                  tabRefs.current[idx] = el;
+                }}
                 className="tab"
                 role="tab"
                 type="button"
                 id={`tab-${div.id}`}
+                tabIndex={activeId === div.id ? 0 : -1}
                 aria-selected={activeId === div.id}
-                onClick={() => setActiveId(div.id)}
+                aria-controls={div.id}
+                onClick={() => selectDivision(div.id, true)}
+                onKeyDown={(e) => handleTabKeyDown(e, idx)}
               >
                 {Number(div.number)}. {div.title}
               </button>
@@ -77,10 +103,10 @@ export default function BhashaRakshakPage() {
             spotlightColor="#2b45a8"
             intensity={0.08}
           >
-            <div className="split" id={activeDivision.id}>
+            <div className="split" id={activeDivision.id} role="tabpanel" aria-labelledby={`tab-${activeDivision.id}`}>
               <div className="split-copy">
                 <h3>
-                  {Number(activeDivision.number)}. {activeDivision.title} ({activeDivision.titleEn})
+                  {Number(activeDivision.number)}. {activeDivision.title} (<span translate="no">{activeDivision.titleEn}</span>)
                 </h3>
                 <p className="lead">{activeDivision.summary}</p>
                 <p>मुख्य भूमिका: {activeDivision.role}</p>
@@ -120,8 +146,10 @@ export default function BhashaRakshakPage() {
               name="rakshak-search"
               className="search-input"
               type="search"
+              autoComplete="off"
+              enterKeyHint="search"
               aria-label="भाषा रक्षक श्रेणी खोजें"
-              placeholder="रक्षक श्रेणी खोजें (जैसे: प्रहरी, सेनानी, विश्वदूत, सेवी, सम्मान, द्वीप)"
+              placeholder="रक्षक श्रेणी खोजें (जैसे: प्रहरी, सेनानी, विश्वदूत)…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -135,27 +163,33 @@ export default function BhashaRakshakPage() {
                   <th>हिंदी श्रेणी</th>
                   <th>अंग्रेजी नाम</th>
                   <th>मुख्य भूमिका</th>
+                  <th>विवरण</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredDivisions.map((div) => (
-                  <tr
-                    key={div.id}
-                    onClick={() => {
-                      setActiveId(div.id);
-                      window.scrollTo({ top: 320, behavior: 'smooth' });
-                    }}
-                    style={{ cursor: 'pointer' }}
-                  >
+                  <tr key={div.id}>
                     <td className="num">{div.number}</td>
                     <td>{div.title}</td>
-                    <td>{div.titleEn}</td>
+                    <td translate="no">{div.titleEn}</td>
                     <td>{div.role}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="table-action"
+                        onClick={() => {
+                          selectDivision(div.id, true);
+                          document.getElementById('rakshak-dir-title')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        विवरण देखें
+                      </button>
+                    </td>
                   </tr>
                 ))}
                 {!filteredDivisions.length && (
                   <tr>
-                    <td colSpan={4}>कोई मेल खाने वाली श्रेणी नहीं मिली।</td>
+                    <td colSpan={5}>कोई मेल खाने वाली श्रेणी नहीं मिली।</td>
                   </tr>
                 )}
               </tbody>

@@ -2,9 +2,50 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import site from '../data/site.json';
 
+const ROUTE_META = {
+  '/': {
+    title: 'वैश्विक हिंदी सम्मेलन | Vaishwik Hindi Sammelan',
+    description: 'वैश्विक हिंदी सम्मेलन का आधिकारिक मंच: हिंदी और भारतीय भाषाओं के संवर्धन, कार्यक्रमों, प्रकाशनों तथा भारतीय भाषा रक्षकों का संग्रह।'
+  },
+  '/about': {
+    title: 'हमारे बारे में (About Us) | वैश्विक हिंदी सम्मेलन',
+    description: 'वैश्विक हिंदी सम्मेलन का परिचय, उद्देश्य, चार आधार और संपर्क विवरण।'
+  },
+  '/karyakram': {
+    title: 'भाषा कार्यक्रम (Language Programs) | वैश्विक हिंदी सम्मेलन',
+    description: 'वैश्विक हिंदी सम्मेलन कार्यक्रम तथा भारतीय भाषाओं के नए कार्यक्रमों की संपूर्ण रूपरेखा।'
+  },
+  '/prakashan': {
+    title: 'सामग्री एवं प्रकाशन (Material & Press) | वैश्विक हिंदी सम्मेलन',
+    description: 'नवीनतम भाषा सामग्री, पुस्तक व पत्रिका तथा पत्र-पत्रिका कतरन संग्रह।'
+  },
+  '/bhasha-rakshak': {
+    title: 'भारतीय भाषा रक्षक (Bhartiya Bhasha Rakshak) | वैश्विक हिंदी सम्मेलन',
+    description: 'भारत भाषा प्रहरी, भारतीय भाषा सेनानी, हिंदी के विश्वदूत, भाषा सेवी, सम्मान प्राप्तकर्ता तथा हिंदी के द्वीप।'
+  },
+  '/gallery': {
+    title: 'फोटो गैलरी (Photo Gallery) | वैश्विक हिंदी सम्मेलन',
+    description: 'वैश्विक हिंदी सम्मेलन के आयोजनों, ग्रंथागार और सांस्कृतिक कार्यक्रमों की फोटो गैलरी।'
+  }
+};
+
 export default function Layout({ children, credits }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    const meta = ROUTE_META[pathname] || ROUTE_META['/'];
+    document.title = meta.title;
+    const descEl = document.querySelector('meta[name="description"]');
+    if (descEl) descEl.setAttribute('content', meta.description);
+    const canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) {
+      canonicalEl.setAttribute(
+        'href',
+        `https://vhs-website.navalo.workers.dev${pathname === '/' ? '/' : pathname}`
+      );
+    }
+  }, [pathname]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -20,6 +61,10 @@ export default function Layout({ children, credits }) {
 
   return (
     <>
+      <a className="skip-link" href="#main-content">
+        मुख्य सामग्री पर जाएं
+      </a>
+
       <header className="site-header">
         <div className="container nav-bar">
           <Link className="brand" to="/" aria-label="वैश्विक हिंदी सम्मेलन मुख्य पृष्ठ">
@@ -33,7 +78,7 @@ export default function Layout({ children, credits }) {
             </span>
             <span className="brand-text">
               <span className="brand-title">{site.orgName}</span>
-              <span className="brand-sub">{site.orgNameEn}</span>
+              <span className="brand-sub" translate="no">{site.orgNameEn}</span>
             </span>
           </Link>
 
@@ -65,7 +110,7 @@ export default function Layout({ children, credits }) {
         </div>
       </header>
 
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1}>{children}</main>
 
       <footer className="site-footer">
         <div className="container">

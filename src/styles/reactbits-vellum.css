@@ -122,8 +122,20 @@
   line-height: 1.35;
 }
 
+.masonry-lightbox {
+  overscroll-behavior: contain;
+}
+
 .masonry-lightbox__backdrop {
   background: color-mix(in oklch, var(--color-ink) 92%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .masonry__card,
+  .ag-panel,
+  .spotlight-card {
+    transition: none !important;
+  }
 }
 
 /* Folder archive row */

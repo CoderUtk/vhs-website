@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import AnimatedList from '../components/reactbits/AnimatedList';
@@ -10,6 +10,8 @@ import programsData from '../data/programs.json';
 
 export default function HomePage() {
   const [programTab, setProgramTab] = useState('vhs');
+  const vhsTabRef = useRef(null);
+  const indianTabRef = useRef(null);
   const navigate = useNavigate();
 
   const newsItems = newsData.newsItems.map((item) => ({
@@ -115,28 +117,53 @@ export default function HomePage() {
             <p className="lead">वैश्विक हिंदी सम्मेलन कार्यक्रम तथा भारतीय भाषाओं के नए कार्यक्रम (Language Programs)।</p>
           </div>
 
-          <div className="seg" role="tablist" aria-label="कार्यक्रम श्रेणियां">
+          <div
+            className="seg"
+            role="tablist"
+            aria-label="कार्यक्रम श्रेणियां"
+            onKeyDown={(e) => {
+              if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                const next = programTab === 'vhs' ? 'indian' : 'vhs';
+                setProgramTab(next);
+                (next === 'vhs' ? vhsTabRef : indianTabRef).current?.focus({ preventScroll: true });
+              }
+            }}
+          >
             <button
+              ref={vhsTabRef}
               className="tab"
               role="tab"
               type="button"
+              id="tab-home-vhs"
+              tabIndex={programTab === 'vhs' ? 0 : -1}
               aria-selected={programTab === 'vhs'}
+              aria-controls="panel-home-programs"
               onClick={() => setProgramTab('vhs')}
             >
               वैश्विक हिंदी सम्मेलन कार्यक्रम
             </button>
             <button
+              ref={indianTabRef}
               className="tab"
               role="tab"
               type="button"
+              id="tab-home-indian"
+              tabIndex={programTab === 'indian' ? 0 : -1}
               aria-selected={programTab === 'indian'}
+              aria-controls="panel-home-programs"
               onClick={() => setProgramTab('indian')}
             >
               भारतीय भाषाओं के नए कार्यक्रम
             </button>
           </div>
 
-          <ul className="ledger">
+          <ul
+            className="ledger"
+            id="panel-home-programs"
+            role="tabpanel"
+            aria-labelledby={programTab === 'vhs' ? 'tab-home-vhs' : 'tab-home-indian'}
+          >
             {(programTab === 'vhs' ? programsData.vhsPrograms : programsData.indianLanguagePrograms).map((prog) => (
               <li className="ledger-row" key={prog.id}>
                 <span className="ledger-index">{prog.category}</span>

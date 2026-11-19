@@ -55,8 +55,10 @@ export default function ProgramsPage() {
               name="programs-search"
               className="search-input"
               type="search"
+              autoComplete="off"
+              enterKeyHint="search"
               aria-label="कार्यक्रम खोजें"
-              placeholder="कार्यक्रम खोजें (जैसे: संगोष्ठी, अनुवाद, राजभाषा, सम्मान)"
+              placeholder="कार्यक्रम खोजें (जैसे: संगोष्ठी, अनुवाद, राजभाषा)…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />

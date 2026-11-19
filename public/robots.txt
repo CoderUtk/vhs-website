@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vhs-website.navalo.workers.dev/sitemap.xml
