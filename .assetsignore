@@ -1,7 +1,12 @@
-.agents
-.git
+.agents/
+.agents/**
+.git/
+.git/**
+.hallmark/
+.hallmark/**
+.wrangler/
+.wrangler/**
 .gitignore
-.hallmark
-.wrangler
+.assetsignore
 skills-lock.json
 wrangler.jsonc
