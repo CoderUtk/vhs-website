@@ -63,22 +63,32 @@ body {
 .brand-mark {
   display: grid;
   place-items: center;
-  min-width: 40px;
-  height: 40px;
-  padding-inline: var(--space-xs);
-  border: var(--rule-hair) solid var(--color-ink);
+  width: 52px;
+  height: 44px;
   border-radius: var(--radius-card);
-  background: var(--color-paper-2);
-  font-family: var(--font-display);
-  font-size: var(--text-md);
-  font-weight: 600;
-  color: var(--color-ink);
+  background: transparent;
+  flex-shrink: 0;
 }
 
 [data-slot="logo"] > img {
   object-fit: contain;
-  padding: var(--space-3xs);
+  padding: 0;
   filter: none;
+  mix-blend-mode: multiply;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.footer-logo {
+  width: 64px;
+  height: 65px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  flex-shrink: 0;
 }
 
 .brand-text {
