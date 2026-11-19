@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "id": "gal-1",
+      "category": "सभागार",
+      "title": "प्रमुख सभागार एवं संगोष्ठी मंच",
+      "caption": "सम्मेलन एवं संवाद के लिए काष्ठ सभागार (प्रतीकात्मक स्लॉट 01)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Tianjin_Grand_Theater_Concert_Hall.jpg/1280px-Tianjin_Grand_Theater_Concert_Hall.jpg",
+      "width": 3533,
+      "height": 2199,
+      "creditName": "北京驱动文化传媒有限公司",
+      "creditUrl": "https://commons.wikimedia.org/wiki/File:Tianjin_Grand_Theater_Concert_Hall.jpg",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "id": "gal-2",
+      "category": "ग्रंथागार",
+      "title": "पुस्तक प्रदर्शनी एवं ग्रंथागार कक्ष",
+      "caption": "ऐतिहासिक ग्रंथागार की पुस्तक पंक्तियां (प्रतीकात्मक स्लॉट 02)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/13-11-02-olb-by-RalfR-03.jpg/1280px-13-11-02-olb-by-RalfR-03.jpg",
+      "width": 4288,
+      "height": 2848,
+      "creditName": "Ralf Roletschek",
+      "creditUrl": "https://commons.wikimedia.org/wiki/File:13-11-02-olb-by-RalfR-03.jpg",
+      "license": "CC BY 3.0"
+    },
+    {
+      "id": "gal-3",
+      "category": "साहित्य लेखन",
+      "title": "लेखक संवाद एवं साहित्य लेखन",
+      "caption": "कागज पर स्याही की कलम से लेखन कार्य (प्रतीकात्मक स्लॉट 03)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Fountain_pen_writing_%28literacy%29.jpg/1280px-Fountain_pen_writing_%28literacy%29.jpg",
+      "width": 4620,
+      "height": 3388,
+      "creditName": "Petar Milošević",
+      "creditUrl": "https://commons.wikimedia.org/wiki/File:Fountain_pen_writing_(literacy).jpg",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "id": "gal-4",
+      "category": "प्रकाशन",
+      "title": "मुद्रण धरोहर एवं प्रकाशन विमोचन",
+      "caption": "मुद्रण प्रेस के पुराने काष्ठ अक्षर (प्रतीकात्मक स्लॉट 04)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Wood_Type_close-up.jpg/1280px-Wood_Type_close-up.jpg",
+      "width": 4714,
+      "height": 3143,
+      "creditName": "Adam Lusch",
+      "creditUrl": "https://commons.wikimedia.org/wiki/File:Wood_Type_close-up.jpg",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "id": "gal-5",
+      "category": "ग्रंथागार",
+      "title": "साहित्यिक पुस्तकों का संग्रह",
+      "caption": "चमड़े की जिल्द वाली चार प्राचीन पुस्तकें (प्रतीकात्मक स्लॉट 05)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Old_Books_01.JPG/1280px-Old_Books_01.JPG",
+      "width": 2400,
+      "height": 2466,
+      "creditName": "Ch. Maderthoner",
+      "creditUrl": "https://commons.wikimedia.org/wiki/File:Old_Books_01.JPG",
+      "license": "CC0"
+    },
+    {
+      "id": "gal-6",
+      "category": "साहित्य लेखन",
+      "title": "अध्ययन एवं संवाद कक्ष",
+      "caption": "ऊंची पुस्तक अलमारियों से सजा अध्ययन कक्ष (प्रतीकात्मक स्लॉट 06)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Interior_of_Cantys_Bookshop_July_2022.jpg/1280px-Interior_of_Cantys_Bookshop_July_2022.jpg",
+      "width": 4032,
+      "height": 3024,
+      "creditName": "Nick-D",
+      "creditUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Cantys_Bookshop_July_2022.jpg",
+      "license": "CC BY-SA 4.0"
+    }
+  ]
+}

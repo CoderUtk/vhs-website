@@ -1,0 +1,26 @@
+{
+  "orgName": "वैश्विक हिंदी सम्मेलन",
+  "orgNameEn": "Vaishwik Hindi Sammelan",
+  "shortDesc": "Vaishwik Hindi Sammelan (VHS) हिंदी एवं भारतीय भाषाओं का सांस्कृतिक मंच।",
+  "heroHeadline": "वैश्विक हिंदी सम्मेलन",
+  "heroLead": "हिंदी और भारतीय भाषाओं के संवर्धन, संवाद तथा सांस्कृतिक धरोहर का साझा मंच।",
+  "heroImage": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/13-11-02-olb-by-RalfR-03.jpg/1280px-13-11-02-olb-by-RalfR-03.jpg",
+    "width": 4288,
+    "height": 2848,
+    "alt": "ऐतिहासिक ग्रंथागार की काष्ठ मेहराबें और प्राचीन पुस्तकें",
+    "caption": "प्रतीकात्मक ग्रंथागार चित्र, जिसे संगठन के अपने सम्मेलन चित्र से बदला जा सकता है।"
+  },
+  "contact": {
+    "address": "संगठन का आधिकारिक पता यहां जोड़ा जाएगा",
+    "emailPhone": "आधिकारिक ईमेल व फोन नंबर यहां जोड़ा जाएगा"
+  },
+  "nav": [
+    { "to": "/", "label": "मुख्य पृष्ठ", "labelEn": "Home" },
+    { "to": "/about", "label": "हमारे बारे में", "labelEn": "About Us" },
+    { "to": "/karyakram", "label": "कार्यक्रम", "labelEn": "Programs" },
+    { "to": "/prakashan", "label": "सामग्री एवं प्रकाशन", "labelEn": "Material & Press" },
+    { "to": "/bhasha-rakshak", "label": "भारतीय भाषा रक्षक", "labelEn": "Bhasha Rakshak" },
+    { "to": "/gallery", "label": "फोटो गैलरी", "labelEn": "Photo Gallery" }
+  ]
+}

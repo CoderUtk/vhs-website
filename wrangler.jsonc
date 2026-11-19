@@ -2,6 +2,7 @@
   "name": "vhs-website",
   "compatibility_date": "2026-11-19",
   "assets": {
-    "directory": "."
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
   }
 }
