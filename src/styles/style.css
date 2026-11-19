@@ -308,21 +308,23 @@ body {
 
 .band--pigment {
   background: var(--color-field);
-  color: var(--color-accent-ink);
+  color: var(--color-field-ink);
+  border-top: var(--rule-double) double var(--color-rule);
+  border-bottom: var(--rule-double) double var(--color-rule);
 }
 
 .band--pigment .lead,
 .band--pigment .muted {
-  color: var(--color-accent-ink);
+  color: var(--color-field-ink);
   opacity: 0.9;
 }
 
 .band--pigment a:not(.btn) {
-  color: var(--color-accent-ink);
+  color: var(--color-field-ink);
 }
 
 .band--pigment :focus-visible {
-  outline-color: var(--color-accent-ink);
+  outline-color: var(--color-field-ink);
 }
 
 .fibre {
@@ -367,7 +369,7 @@ body {
 }
 
 .band--pigment .ledger {
-  border-top-color: var(--color-accent-ink);
+  border-top-color: var(--color-field-ink);
 }
 
 .ledger-row {
@@ -381,7 +383,7 @@ body {
 }
 
 .band--pigment .ledger-row {
-  border-bottom-color: color-mix(in oklab, var(--color-accent-ink) 28%, transparent);
+  border-bottom-color: color-mix(in oklab, var(--color-field-ink) 24%, transparent);
 }
 
 .ledger-row:hover {
@@ -389,7 +391,7 @@ body {
 }
 
 .band--pigment .ledger-row:hover {
-  background: color-mix(in oklab, var(--color-accent-ink) 10%, transparent);
+  background: color-mix(in oklab, var(--color-field-ink) 8%, transparent);
 }
 
 .ledger-index {
@@ -399,7 +401,7 @@ body {
 }
 
 .band--pigment .ledger-index {
-  color: var(--color-accent-ink);
+  color: var(--color-paper-3);
 }
 
 .ledger-title {
@@ -416,7 +418,8 @@ body {
 }
 
 .band--pigment .ledger-desc {
-  color: var(--color-accent-ink);
+  color: var(--color-field-ink);
+  opacity: 0.88;
 }
 
 .ledger-link {
@@ -493,13 +496,14 @@ body {
 }
 
 .band--pigment .tab {
-  border-color: var(--color-accent-ink);
-  color: var(--color-accent-ink);
+  border-color: color-mix(in oklab, var(--color-field-ink) 65%, transparent);
+  color: var(--color-field-ink);
 }
 
 .band--pigment .tab[aria-selected="true"] {
-  background: var(--color-accent-ink);
-  color: var(--color-accent);
+  background: var(--color-field-ink);
+  border-color: var(--color-field-ink);
+  color: var(--color-field);
 }
 
 /* Grids */
